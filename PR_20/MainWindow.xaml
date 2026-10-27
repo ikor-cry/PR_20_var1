@@ -1,0 +1,47 @@
+﻿<Window x:Class="PR_20.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Интернет-магазин" Height="450" Width="650" 
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!-- Витрина -->
+            <ColumnDefinition Width="Auto" />
+            <!-- Кнопки по центру -->
+            <ColumnDefinition Width="*" />
+            <!-- Корзина -->
+        </Grid.ColumnDefinitions>
+
+        <!-- ЛЕВАЯ ЧАСТЬ: Витрина -->
+        <GroupBox Grid.Column="0" Header=" Витрина " FontWeight="Bold" Margin="5">
+            <ListBox x:Name="ShopList" 
+                     ItemsSource="{Binding Products}" 
+                     DisplayMemberPath="DisplayName"
+                     Margin="5" Padding="5"/>
+        </GroupBox>
+
+        <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ: Кнопки -->
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+            <Button Content="Добавить в корзину ➡" 
+                    Click="AddButton_Click"
+                    Padding="10,8" Margin="0,0,0,15"
+                    Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+
+            <Button Content="Оформить заказ" 
+                    Click="CheckoutButton_Click"
+                    Padding="10,8"
+                    Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+
+
+        <GroupBox Grid.Column="2" Header=" Корзина " FontWeight="Bold" Margin="5">
+            <ListBox x:Name="CartList" 
+                     ItemsSource="{Binding Cart}" 
+                     DisplayMemberPath="DisplayName"
+                     Margin="5" Padding="5"/>
+        </GroupBox>
+    </Grid>
+</Window>
